@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Country</title>
+
+    <style>
+        .all-countries{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 0.5rem;
+        }
+        .country{
+            border: 2px solid #000000;
+            border-radius: 10px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .img-container{
+            width: 100%;
+            height: 50%;
+        }
+        .img{
+            width: 100%;
+            height: 100%;
+        }
+        .country-info{
+            width: 100%;
+            height: 50%;
+        }
+        .btn{
+            background-color: #f0cb2a;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 10px;
+        }
+
+        @media screen and (max-width: 992px) {
+            .all-countries{
+            grid-template-columns: repeat(3,1fr);
+            }
+        }
+
+        @media screen and (max-width: 772px) {
+            .all-countries{
+            grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media screen and (max-width: 562px) {
+            .all-countries{
+            grid-template-columns: repeat(1,1fr);
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1>All Countries And their Capitals</h1>
+    </header>
+
+    <main>
+
+        <section>
+            <div class="all-countries" id="country-container">
+
+                
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- js -->
+    <script src="./js/randomCountry.js"></script>
+    
+</body>
+</html>
