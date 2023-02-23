@@ -19,7 +19,7 @@ const displFish=(data)=>{
             <img src="${element.strMealThumb}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${element.strMeal}</h5>
-            <button onclick="showMoreInfo('${element.idMeal}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foodDetails">
+            <button onclick="showMoreInfo2('${element.idMeal}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foodDetails">
                 Details
             </button>
 
@@ -44,7 +44,36 @@ const showMoreInfo=(idmeal)=>{
     fetch(url)
     .then(res=> res.json())
     .then(data=>displayMoreInfo(data.meals[0]))
+    .catch(error=>{
+        const body=document.getElementById("meal-thum");
+        body.innerHTML=`
+            <p class="card-text">
+                ${ex}
+            </p>
+        `;
+    });
 }
+
+
+const showMoreInfo2= async(idMeal)=>{
+
+    try{
+        const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        displayMoreInfo(data.meals[0]);
+    }
+    catch(ex){
+        const body=document.getElementById("meal-thum");
+        body.innerHTML=`
+            <p class="card-text">
+                ${ex}
+            </p>
+        `;
+    }
+   
+}
+
 
 const displayMoreInfo=(data)=>{
     console.log(data);
@@ -55,7 +84,7 @@ const displayMoreInfo=(data)=>{
         <p class="card-text">
             <strong>Price: </strong> ${data.idMeal}
         </p>
-    `
+    `;
 }
 
 
