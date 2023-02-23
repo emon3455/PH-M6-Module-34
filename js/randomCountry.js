@@ -19,7 +19,7 @@ const DisplayCountry=(data)=>{
             </div>
             <div class="country-info">
                 <h3>Name: ${countries.name.common}</h3>
-                <p>Capital: ${countries.capital ? countries.capital[0]:"No Capital"}</p>
+                <p>Capital: ${countries.capital ? countries.capital:"No Capital"}</p>
                 <button class="btn" onclick="displayMoreDetails('${countries.cca2}')">See more</button>
             </div>
             
@@ -35,8 +35,20 @@ const displayMoreDetails=(code)=>{
     const url = `https://restcountries.com/v3.1/alpha/${code}`;
     fetch(url)
     .then(res=> res.json())
-    .then(data=> )
+    .then(data=> displayMoreinfo(data[0]))
 
+}
+
+const displayMoreinfo=country=>{
+    
+    const container=document.getElementById("moreInfo");
+    container.innerHTML=`
+        <h3>Name: ${country.name.official}</h3>
+        <h3>Flag: </h3>
+        <img src="${country.flags.png}" alt="">
+        <p><strong>Area</strong>: ${country.area}</p>
+        <p><strong>Population: </strong>: ${country.population}</p>
+    `;
 }
 
 loadRandomCountry();
